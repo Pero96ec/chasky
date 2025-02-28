@@ -35,15 +35,28 @@ class LoginController extends GetxController {
           'user',
           responseApi.data,
         ); // DATOS DEL USUARIO EN SESION
-        goToHomePage();
+        User myUser = User.fromJson(GetStorage().read('user') ?? {});
+
+        print('Roles length: ${myUser.roles!.length}');
+
+        if (myUser.roles!.length > 1) {
+          goToRolesPage();
+        } else {
+          // SOLO UN ROL
+          goToClientProductPage();
+        }
       } else {
         Get.snackbar('Login fallido', responseApi.message ?? '');
       }
     }
   }
 
-  void goToHomePage() {
-    Get.offNamedUntil('/home', (route) => false);
+  void goToClientProductPage() {
+    Get.offNamedUntil('/client/products/list', (route) => false);
+  }
+
+  void goToRolesPage() {
+    Get.offNamedUntil('/roles', (route) => false);
   }
 
   bool isValidForm(String email, String password) {
