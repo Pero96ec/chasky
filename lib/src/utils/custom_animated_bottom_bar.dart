@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class CustomAnimatedBottomBar extends StatelessWidget {
-
   CustomAnimatedBottomBar({
     Key? key,
     this.selectedIndex = 0,
@@ -17,7 +16,7 @@ class CustomAnimatedBottomBar extends StatelessWidget {
     required this.onItemSelected,
     this.curve = Curves.linear,
   }) : assert(items.length >= 2 && items.length <= 5),
-        super(key: key);
+       super(key: key);
 
   final int selectedIndex;
   final double iconSize;
@@ -42,10 +41,7 @@ class CustomAnimatedBottomBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
         boxShadow: [
           if (showElevation)
-            const BoxShadow(
-              color: Colors.black12,
-              blurRadius: 2,
-            ),
+            const BoxShadow(color: Colors.black12, blurRadius: 2),
         ],
       ),
       child: SafeArea(
@@ -55,21 +51,22 @@ class CustomAnimatedBottomBar extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
           child: Row(
             mainAxisAlignment: mainAxisAlignment,
-            children: items.map((item) {
-              var index = items.indexOf(item);
-              return GestureDetector(
-                onTap: () => onItemSelected(index),
-                child: _ItemWidget(
-                  item: item,
-                  iconSize: iconSize,
-                  isSelected: index == selectedIndex,
-                  backgroundColor: bgColor,
-                  itemCornerRadius: itemCornerRadius,
-                  animationDuration: animationDuration,
-                  curve: curve,
-                ),
-              );
-            }).toList(),
+            children:
+                items.map((item) {
+                  var index = items.indexOf(item);
+                  return GestureDetector(
+                    onTap: () => onItemSelected(index),
+                    child: _ItemWidget(
+                      item: item,
+                      iconSize: iconSize,
+                      isSelected: index == selectedIndex,
+                      backgroundColor: bgColor,
+                      itemCornerRadius: itemCornerRadius,
+                      animationDuration: animationDuration,
+                      curve: curve,
+                    ),
+                  );
+                }).toList(),
           ),
         ),
       ),
@@ -95,7 +92,7 @@ class _ItemWidget extends StatelessWidget {
     required this.itemCornerRadius,
     required this.iconSize,
     this.curve = Curves.linear,
-  })  : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +106,7 @@ class _ItemWidget extends StatelessWidget {
         curve: curve,
         decoration: BoxDecoration(
           color:
-          isSelected ? item.activeColor.withOpacity(0.2) : backgroundColor,
+              isSelected ? item.activeColor.withOpacity(0.2) : backgroundColor,
           borderRadius: BorderRadius.circular(itemCornerRadius),
         ),
         child: SingleChildScrollView(
@@ -126,11 +123,12 @@ class _ItemWidget extends StatelessWidget {
                 IconTheme(
                   data: IconThemeData(
                     size: iconSize,
-                    color: isSelected
-                        ? item.activeColor.withOpacity(1)
-                        : item.inactiveColor == null
-                        ? item.activeColor
-                        : item.inactiveColor,
+                    color:
+                        isSelected
+                            ? item.activeColor.withOpacity(1)
+                            : item.inactiveColor == null
+                            ? item.activeColor
+                            : item.inactiveColor,
                   ),
                   child: item.icon,
                 ),
@@ -157,8 +155,8 @@ class _ItemWidget extends StatelessWidget {
     );
   }
 }
-class BottomNavyBarItem {
 
+class BottomNavyBarItem {
   BottomNavyBarItem({
     required this.icon,
     required this.title,
@@ -172,5 +170,4 @@ class BottomNavyBarItem {
   final Color activeColor;
   final Color? inactiveColor;
   final TextAlign? textAlign;
-
 }

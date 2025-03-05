@@ -8,15 +8,16 @@ plugins {
 android {
     namespace = "com.example.chasky"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17 
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     defaultConfig {
@@ -24,7 +25,7 @@ android {
         applicationId = "com.example.chasky"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+        minSdk = 21
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -37,6 +38,16 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+        buildFeatures {
+        buildConfig = true
+    }
+
+    dependencies {
+        implementation("androidx.core:core-ktx:1.9.0") // Asegúrate de que esta línea ya esté presente
+        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3") // 🔥 Agregar esta línea
+    }
+
+
 }
 
 flutter {
