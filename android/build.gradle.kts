@@ -1,3 +1,15 @@
+// Agregar configuración para Android Gradle Plugin (AGP)
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal() // Agrega este repositorio para resolver plugins
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.2.1") // Mantén la última versión compatible
+    }
+}
+
 allprojects {
     repositories {
         google()

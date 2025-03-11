@@ -1,0 +1,48 @@
+{
+    "project_info": {
+      "project_number": "157978002229",
+      "project_id": "chasky-45cbc",
+      "storage_bucket": "chasky-45cbc.firebasestorage.app"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:157978002229:android:954e73374e7fe5cdca427c",
+          "android_client_info": {
+            "package_name": "com.elite.chasky"
+          }
+        },
+        "oauth_client": [],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDs4tkRnyGFtud_pOxGdQ0sqVFP3K_u9J8"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": []
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:157978002229:android:6eb7a295b009aa9bca427c",
+          "android_client_info": {
+            "package_name": "com.example.chasky"
+          }
+        },
+        "oauth_client": [],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDs4tkRnyGFtud_pOxGdQ0sqVFP3K_u9J8"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": []
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
