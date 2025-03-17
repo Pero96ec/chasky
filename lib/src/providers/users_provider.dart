@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 
 class UsersProvider extends GetConnect {
   String url = Environment.API_URL + 'api/users';
+  String urlLotaction = Environment.API_URL;
 
   Future<Response> create(User user) async {
     Response response = await post(
@@ -68,5 +69,24 @@ class UsersProvider extends GetConnect {
 
     ResponseApi responseApi = ResponseApi.fromJson(response.body);
     return responseApi;
+  }
+
+  Future<void> sendLocation(
+    String phone,
+    double latitude,
+    double longitude,
+  ) async {
+    String basicAuth = 'Basic ' + base64Encode(utf8.encode('admin:admin123'));
+    Response response = await post(
+      '$urlLotaction/ck/api/delivery/service',
+      {'phone': phone, 'latitude': latitude, 'longitude': longitude},
+      headers: {'Content-Type': 'application/json', 'Authorization': basicAuth},
+    );
+
+    if (response.body == null) {
+      Get.snackbar('Error', 'No se pudo enviar la ubicación');
+    } else {
+      Get.snackbar('Éxito', 'Ubicación enviada correctamente');
+    }
   }
 }

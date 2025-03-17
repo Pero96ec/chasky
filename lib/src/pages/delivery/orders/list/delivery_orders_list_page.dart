@@ -7,6 +7,21 @@ class DeliveryOrdersListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Delivery Orders List')));
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Delivery Orders List'),
+            ElevatedButton(
+              onPressed: () {
+                Get.snackbar('Title', 'This is a message');
+              },
+              child: Text('Show Message'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
